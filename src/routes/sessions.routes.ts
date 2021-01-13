@@ -3,7 +3,6 @@ import { Router } from 'express';
 import AuthenticateUserService from './../services/AuthenticateUserService';
 
 const sessionsRouter = Router();
-
 interface UserAuthDTO {
   email: string;
   password?: string;
