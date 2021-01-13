@@ -15,14 +15,12 @@ sessionsRouter.post('/', async (request, response) => {
 
     const autenthicateUser = new AuthenticateUserService();
 
-    const userObject = await autenthicateUser.execute({
+    const { user: hasUserInfo, token } = await autenthicateUser.execute({
       email,
       password,
     });
 
-    const { user: userInfo, token } = userObject;
-
-    const user: UserAuthDTO = userInfo;
+    const user: UserAuthDTO = hasUserInfo;
 
     delete user.password;
 
