@@ -7,16 +7,6 @@ import UpdateUserAvatarService from './../services/UpdateUserAvatarService';
 
 import ensureAuthenticated from './../middlewares/ensureAuthenticated';
 
-interface RequestDTO {
-  id: string;
-  name: string;
-  email: string;
-  created_at: Date;
-  updated_at: Date;
-  user_id?: string;
-  avatarFilename?: string;
-}
-
 const usersRouter = Router();
 const upload = multer(uploadConfig);
 
