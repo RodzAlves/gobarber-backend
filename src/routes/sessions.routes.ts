@@ -9,24 +9,20 @@ interface UserAuthDTO {
 }
 
 sessionsRouter.post('/', async (request, response) => {
-  try {
-    const { email, password } = request.body;
+  const { email, password } = request.body;
 
-    const autenthicateUser = new AuthenticateUserService();
+  const autenthicateUser = new AuthenticateUserService();
 
-    const { user: hasUserInfo, token } = await autenthicateUser.execute({
-      email,
-      password,
-    });
+  const { user: hasUserInfo, token } = await autenthicateUser.execute({
+    email,
+    password,
+  });
 
-    const user: UserAuthDTO = hasUserInfo;
+  const user: UserAuthDTO = hasUserInfo;
 
-    delete user.password;
+  delete user.password;
 
-    return response.json({ user, token });
-  } catch (err) {
-    return response.status(400).json({ Error: err.message });
-  }
+  return response.json({ user, token });
 });
 
 export default sessionsRouter;
